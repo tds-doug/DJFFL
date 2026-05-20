@@ -1,0 +1,191 @@
+#!/usr/bin/perl -w
+
+use strict;
+use DBI;
+use CGI qw(:all);
+use Foozeball;
+
+my $ffl_manager = Foozeball::get_ffl_mgr($ENV{'REMOTE_USER'});
+
+print header();
+print start_html("Fantasy Football Side Bar");
+
+print "<body bgcolor=\"#132C06\" link=\"#FFFF80\" vlink=\"#FFFF80\" alink=\"#FFFF80\">\n";
+print "<font face=\"Verdana\" color=\"#FFFFDF\">\n";
+
+if($ffl_manager eq 'Dr. Keledjian')
+{
+  print "Welcome <font color=\"#FF00FF\">$ffl_manager</font>\n";
+}
+else
+{
+  print "Welcome <i>$ffl_manager</i>\n";
+}
+print "<p>\n";
+
+print "<center><b>FFL Tools</b></center>\n";
+print "<p>\n";
+
+# Draft Section
+print "<center>Draft</center>\n";
+print "<ul>\n";
+print "  <li><b><a href=\"./draft_central.cgi\" target=\"main\">Draft Central</a></b></li>\n";
+#print "  <li><b><a href=\"./draft.cgi\" target=\"main\">Draft Results</a></b></li>\n";
+print "  <li><b>Draft Results</b></li>\n";
+print "</ul>\n";
+
+# Weekly Team Mgmt Section
+print "<center>Week To Week</center>\n";
+print "<ul>\n";
+if ($ffl_manager eq 'Guest')
+{
+  print "  <li><b>Change Lineup</b></li>\n";
+}
+else
+{
+  print "  <li><b><a href=\"./change_lineup.cgi\" target=\"main\">Change Lineup</a></b></li>\n";
+  #print "  <li><b>Change Lineup</b></li>\n";
+}
+print "  <li><b><a href=\"./matchups.cgi\" target=\"main\">Matchups</a></b></li>\n";
+print "  <li><b><a href=\"./power.cgi\" target=\"main\">Power Scores</a></b></li>\n";
+print "  <li><b><a href=\"./lineup.cgi\" target=\"main\">Weekly Lineup</a></b></li>\n";
+print "  <li><b><a href=\"./elimination.cgi\" target=\"main\">Elimination Challenge</a></b></li>\n";
+if ($ffl_manager eq 'Guest')
+{
+  print "  <li><b>Smack Talk</b></li>\n";
+}
+else
+{
+  print "  <li><b><a href=\"./messages.cgi\" target=\"main\">Smack Talk</a></b></li>\n";
+}
+print "</ul>\n";
+
+# Team Mgmt Section
+print "<center>Team Mgmt</center>\n";
+print "<ul>\n";
+print "  <li><b><a href=\"./teams.cgi\" target=\"main\">FFL Teams</a></b></li>\n";
+print "  <li><b><a href=\"./schedule.cgi\" target=\"main\">Your Schedule</a></b></li>\n";
+print "</ul>\n";
+
+# League Mgmt Section
+print "<center>General League</center>\n";
+print "<ul>\n";
+print "  <li><b><a href=\"./standings.cgi\" target=\"main\">Current Standings</a></b></li>\n";
+print "  <li><b><a href=\"./bye_week.cgi\" target=\"main\">Bye Weeks</a></b></li>\n";
+print "  <li><b><a href=\"./freeagent.cgi\" target=\"main\">Free Agent Market</a></b></li>\n";
+print "  <li><b><a href=\"./records.cgi\" target=\"main\">Hall of Records</a></b></li>\n";
+print "  <li><b><a href=\"./history.cgi\" target=\"main\">League History</a></b></li>\n";
+print "  <li><b><a href=\"./rules.cgi\" target=\"main\">League Rules</a></b></li>\n";
+print "</ul>\n";
+
+# Transactions Section
+print "<center>Transactions</center>\n";
+print "<ul>\n";
+print "  <li><b><a href=\"./transactions.cgi\" target=\"main\">Processed Transactions</a></b></li>\n";
+if ($ffl_manager eq 'Guest')
+{
+print "  <li><b>Request a Transaction</b></li>\n";
+}
+else
+{
+print "  <li><b><a href=\"./req_transaction.cgi\" target=\"main\">Request a Transaction</a></b></li>\n";
+#print "  <li><b>Request a Transaction</b></li>\n";
+}
+print "  <li><b><a href=\"./tr.cgi\" target=\"main\">Previous Requests</a></b></li>\n";
+print "</ul>\n";
+
+# Players Section
+print "<center>Players</center>\n";
+print "<ul>\n";
+print "  <li><b><a href=\"./search.cgi\" target=\"main\">Player Search</a></b></li>\n";
+#print "  <li><b><a href=\"./players.cgi\" target=\"main\">Players By Position</a></b></li>\n";
+print "  <li><b><a href=\"./free_players.cgi\" target=\"main\">Available Players</a></b></li>\n";
+print "  <li><b><a href=\"./owned.cgi\" target=\"main\">Owned Players</a></b></li>\n";
+print "  <li><b><a href=\"./franchise.cgi\" target=\"main\">Franchise Players</a></b></li>\n";
+print "  <li><b><a href=\"./top20.cgi\" target=\"main\">Top 20 Players</a></b></li>\n";
+print "</ul>\n";
+
+print "<ul>\n";
+print "</ul>\n";
+
+# Admin Section
+print "<center>Admin</center>\n";
+if($ffl_manager eq 'DJ')
+{
+  print "<ul>\n";
+#  print "  <li><b><a href=\"./dj_change_lineup.cgi\" target=\"main\">DJ Change Lineup</a></b></li>\n";
+  print "  <li><b><a href=\"./admin_elimination.cgi\" target=\"main\">Admin Elimination</a></b></li>\n";
+  print "  <li><b><a href=\"./admin_tr.cgi\" target=\"main\">Admin TR</a></b></li>\n";
+  print "  <li><b><a href=\"./admin_add.cgi\" target=\"main\">Admin Add</a></b></li>\n";
+  print "  <li><b><a href=\"./admin_drop.cgi\" target=\"main\">Admin Drop</a></b></li>\n";
+
+  print "  <li><b><a href=\"./admin_fam.cgi\" target=\"main\">Admin FAM</a></b></li>\n";
+#  print "  <li><b>Admin FAM</b></li>\n";
+
+  print "  <li><b><a href=\"./admin_draft.cgi\" target=\"main\">Admin Draft</a></b></li>\n";
+#  print "  <li><b>Admin Draft</b></li>\n";
+
+#  print "  <li><b><a href=\"./admin_pbp.cgi\" target=\"main\">Admin PBP</a></b></li>\n";
+  print "</ul>\n";
+}
+
+print "<p>\n";
+
+print "<center>Help support the FFL via PayPal</center>\n";
+print " <form action=\"https://www.paypal.com/cgi-bin/webscr\" method=\"post\">\n";
+print " <input type=\"hidden\" name=\"cmd\" value=\"_donations\">\n";
+print " <input type=\"hidden\" name=\"business\" value=\"dj\@seabass.org\">\n";
+print " <input type=\"hidden\" name=\"item_name\" value=\"DJ FFL Support\">\n";
+print " <input type=\"hidden\" name=\"no_shipping\" value=\"0\">\n";
+print " <input type=\"hidden\" name=\"no_note\" value=\"1\">\n";
+print " <input type=\"hidden\" name=\"currency_code\" value=\"USD\">\n";
+print " <input type=\"hidden\" name=\"tax\" value=\"0\">\n";
+print " <input type=\"hidden\" name=\"lc\" value=\"US\">\n";
+print " <input type=\"hidden\" name=\"bn\" value=\"PP-DonationsBF\">\n";
+print " <p><center><input type=\"image\" src=\"https://www.paypal.com/en_US/i/btn/btn_donate_LG.gif\" border=\"0\" name=\"submit\" alt=\"PayPal - The safer, easier way to pay online!\"></center>\n";
+#print " <img alt=\"\" border=\"0\" src=\"https://www.paypal.com/en_US/i/scr/pixel.gif\" width=\"1\" height=\"1\">\n";
+print " </form>\n";
+
+# Website version control
+# v1.0 - blue and white netcool motif
+# v2.0 - dark blue on light blue background
+# v3.0 - cream on dark green background
+# v3.1 - organized side bar - moved html -> cgi links
+# v3.2 - added free agent market link
+# v3.3 - old message board, elimination challenge added
+# v3.3.1 - added nfl opponents to weekly lineup
+# v3.3.2 - added inverted helmets to indicate loss for elimination challenge
+# v3.4 - added hall of records
+# v3.4.1 - extended the "talk smack here" box to bigger size
+# v3.4.2 - added elimincation challenge tool
+# v3.4.3 - changed games back to percentage in standings
+# v3.5 - moved main page to cgi and added smack talk and your matchups
+# v3.5.1 - changed schedule from weekly games to personal season schedule for each manager
+# v3.5.2 - changed smack talk to be non-link for guest login
+# v3.5.3 - added Available Players link
+# v3.6 - added PayPal button
+# v3.7 - changed team page to have split tables for IR and Salary Penalty
+# v3.7.1 - changed change_lineup to use player, position and team instead of just player
+# v3.8 - added transaction request tool
+# v3.8.1 - added owned tool - looks like I wrote it 5 years ago and never finished it
+# v3.8.2 - removed player by position tool - looks like I wrote it 5 years ago and never finished it
+# v3.8.3 - updated smack talk page to include smack time and number of times someone has talked smack
+# v3.9 - restricted guest access to elimination, change lineup and smack talk
+# v3.9.1 - added franchise player tool
+# v3.10 - added draft central page
+# v3.10.1 - added draft ranking tool but have not rolled it out to rest of league
+
+
+print "<font size=1><center>\n";
+
+print "<p>\n";
+
+print "<center><img src=\"http://www.djffl.net/images/PoweredByMacOSX.gif\"></center>\n";
+
+print "<p>\n";
+print "Website version 3.10.1<br>\n";
+
+# Last Updated to give mgr's idea of when I have updated site
+print "Last updated 6 September 2010\n";
+print "</center></font>\n";
+print end_html();

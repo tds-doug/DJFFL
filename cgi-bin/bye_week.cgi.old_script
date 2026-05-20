@@ -1,0 +1,113 @@
+#!/usr/bin/perl -w
+
+use strict;
+use DBI;
+use CGI qw(:all);
+
+print header();
+print start_html("NFL Bye Weeks");
+
+print "<body bgcolor=\"#132C06\" link=\"#FFFF80\" vlink=\"#FFFF80\" alink=\"#FFFF80\">\n";
+print "<font face=\"Verdana\" color=\"#FFFFDF\">\n";
+
+print "<h1><center><font face=\"Verdana\" color=\"#FFFF80\">NFL 2014 Bye Weeks</font></center></h1>\n";
+
+print "<table border=\"5\" width=\"100%\">";
+
+print "<tr>\n";
+print "<td width=\"10%\"><center><b><font color=\"#FFFFDF\">Week 4<br>Sept 26-30</font></b></center></td>\n";
+print "<td width=\"11%\"><center><img src=\"http://www.djffl.net/images/Car.gif\"></center></td>\n";
+print "<td width=\"11%\"><center><img src=\"http://www.djffl.net/images/GB.gif\"></center></td>\n";
+print "<td width=\"11%\"><center>&nbsp;</center></td>\n";
+print "<td width=\"11%\"><center>&nbsp;</center></td>\n";
+print "<td width=\"11%\"><center>&nbsp;</center></td>\n";
+print "<td width=\"11%\"><center>&nbsp;</center></td>\n";
+print "</tr>\n";
+
+print "<tr>\n";
+print "<td width=\"10%\"><center><b><font color=\"#FFFFDF\">Week 5<br>Oct 3-7</font></b></center></td>\n";
+print "<td width=\"11%\"><center><img src=\"http://www.djffl.net/images/Min.gif\"></center></td>\n";
+print "<td width=\"11%\"><center><img src=\"http://www.djffl.net/images/Pit.gif\"></center></td>\n";
+print "<td width=\"11%\"><center><img src=\"http://www.djffl.net/images/TB.gif\"></center></td>\n";
+print "<td width=\"11%\"><center><img src=\"http://www.djffl.net/images/Was.gif\"></center></td>\n";
+print "<td width=\"11%\"><center>&nbsp;</center></td>\n";
+print "<td width=\"11%\"><center>&nbsp;</center></td>\n";
+print "</tr>\n";
+
+print "<tr>\n";
+print "<td width=\"10%\"><center><b><font color=\"#FFFFDF\">Week 6<br>Oct 10-14</font></b></center></td>\n";
+print "<td width=\"11%\"><center><img src=\"http://www.djffl.net/images/Atl.gif\"></center></td>\n";
+print "<td width=\"11%\"><center><img src=\"http://www.djffl.net/images/Mia.gif\"></center></td>\n";
+print "<td width=\"11%\"><center>&nbsp;</center></td>\n";
+print "<td width=\"11%\"><center>&nbsp;</center></td>\n";
+print "<td width=\"11%\"><center>&nbsp;</center></td>\n";
+print "<td width=\"11%\"><center>&nbsp;</center></td>\n";
+print "</tr>\n";
+
+print "<tr>\n";
+print "<td width=\"10%\"><center><b><font color=\"#FFFFDF\">Week 7<br>Oct 17-21</font></b></center></td>\n";
+print "<td width=\"11%\"><center><img src=\"http://www.djffl.net/images/NO.gif\"></center></td>\n";
+print "<td width=\"11%\"><center><img src=\"http://www.djffl.net/images/Oak.gif\"></center></td>\n";
+print "<td width=\"11%\"><center>&nbsp;</center></td>\n";
+print "<td width=\"11%\"><center>&nbsp;</center></td>\n";
+print "<td width=\"11%\"><center>&nbsp;</center></td>\n";
+print "<td width=\"11%\"><center>&nbsp;</center></td>\n";
+print "</tr>\n";
+
+print "<tr>\n";
+print "<td width=\"10%\"><center><b><font color=\"#FFFFDF\">Week 8<br>Oct 24-28</font></b></center></td>\n";
+print "<td width=\"11%\"><center><img src=\"http://www.djffl.net/images/Bal.gif\"></center></td>\n";
+print "<td width=\"11%\"><center><img src=\"http://www.djffl.net/images/Chi.gif\"></center></td>\n";
+print "<td width=\"11%\"><center><img src=\"http://www.djffl.net/images/Hou.gif\"></center></td>\n";
+print "<td width=\"11%\"><center><img src=\"http://www.djffl.net/images/Ind.gif\"></center></td>\n";
+print "<td width=\"11%\"><center><img src=\"http://www.djffl.net/images/SD.gif\"></center></td>\n";
+print "<td width=\"11%\"><center><img src=\"http://www.djffl.net/images/Ten.gif\"></center></td>\n";
+print "</tr>\n";
+
+print "<tr>\n";
+print "<td width=\"10%\"><center><b><font color=\"#FFFFDF\">Week 9<br>Oct 31 - Nov 4</font></b></center></td>\n";
+print "<td width=\"11%\"><center><img src=\"http://www.djffl.net/images/Ari.gif\"></center></td>\n";
+print "<td width=\"11%\"><center><img src=\"http://www.djffl.net/images/Den.gif\"></center></td>\n";
+print "<td width=\"11%\"><center><img src=\"http://www.djffl.net/images/Det.gif\"></center></td>\n";
+print "<td width=\"11%\"><center><img src=\"http://www.djffl.net/images/Jac.gif\"></center></td>\n";
+print "<td width=\"11%\"><center><img src=\"http://www.djffl.net/images/NYG.gif\"></center></td>\n";
+print "<td width=\"11%\"><center><img src=\"http://www.djffl.net/images/SF.gif\"></center></td>\n";
+print "</tr>\n";
+
+print "<tr>\n";
+print "<td width=\"10%\"><center><b><font color=\"#FFFFDF\">Week 10<br>Nov 7-11</font></b></center></td>\n";
+print "<td width=\"11%\"><center><img src=\"http://www.djffl.net/images/Cle.gif\"></center></td>\n";
+print "<td width=\"11%\"><center><img src=\"http://www.djffl.net/images/KC.gif\"></center></td>\n";
+print "<td width=\"11%\"><center><img src=\"http://www.djffl.net/images/NE.gif\"></center></td>\n";
+print "<td width=\"11%\"><center><img src=\"http://www.djffl.net/images/NYJ.gif\"></center></td>\n";
+print "<td width=\"11%\"><center>&nbsp;</center></td>\n";
+print "<td width=\"11%\"><center>&nbsp;</center></td>\n";
+print "</tr>\n";
+
+print "<tr>\n";
+print "<td width=\"10%\"><center><b><font color=\"#FFFFDF\">Week 11<br>Nov 14-18</font></b></center></td>\n";
+print "<td width=\"11%\"><center><img src=\"http://www.djffl.net/images/Dal.gif\"></center></td>\n";
+print "<td width=\"11%\"><center><img src=\"http://www.djffl.net/images/StL.gif\"></center></td>\n";
+print "<td width=\"11%\"><center>&nbsp;</center></td>\n";
+print "<td width=\"11%\"><center>&nbsp;</center></td>\n";
+print "<td width=\"11%\"><center>&nbsp;</center></td>\n";
+print "<td width=\"11%\"><center>&nbsp;</center></td>\n";
+print "</tr>\n";
+
+print "<tr>\n";
+print "<td width=\"10%\"><center><b><font color=\"#FFFFDF\">Week 12<br>Nov 21-25</font></b></center></td>\n";
+print "<td width=\"11%\"><center><img src=\"http://www.djffl.net/images/Buf.gif\"></center></td>\n";
+print "<td width=\"11%\"><center><img src=\"http://www.djffl.net/images/Cin.gif\"></center></td>\n";
+print "<td width=\"11%\"><center><img src=\"http://www.djffl.net/images/Phi.gif\"></center></td>\n";
+print "<td width=\"11%\"><center><img src=\"http://www.djffl.net/images/Sea.gif\"></center></td>\n";
+print "<td width=\"11%\"><center>&nbsp;</center></td>\n";
+print "<td width=\"11%\"><center>&nbsp;</center></td>\n";
+print "</tr>\n";
+
+print "</table>\n";
+
+print "<p>\n";
+
+print "<center>There are no byes for weeks: 1-3 and 13-17</center>\n";
+
+print end_html();
