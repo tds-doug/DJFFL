@@ -1,0 +1,140 @@
+<html>
+<head><title>Fantasy Football Dashboard</title>
+</head><body><body bgcolor="#000033" text="#FFFFFF" link="#6699FF" vlink="#3366CC" alink="#FFFFFF">
+<h1><center>Here Be Ye Dashboard</center></h1>
+<hr>
+<p>
+
+<table border="5" cellpadding="5" width="100%">
+
+<tr>
+  <td align="center" width="33%">
+    <h2><a href="../cgi-bin/owned.cgi" target="main"><font color="#FFFFFF">All Owned Players</font></a></h2>
+  </td>
+  <td align="center" width="33%">
+    <h2><a href="standings.html" target="main"><font color="#FFFFFF">Current Standings</font></a></h2>
+  </td>
+  <td align="center" width="33%">
+    <h2><a href="2004draft.html" target="main"><font color="#FFFFFF">Draft Results</font></a></h2>
+  </td>
+</tr>
+
+<tr>
+  <td width="33%">
+    <form action="/cgi-bin/rosters.cgi" method="post">
+    <center><h2>Display a Team Roster</h2></center>
+    <table>
+      <tr>
+        <td>Team:</td>
+        <td><select name=f_team><option selected value="">Select a Team
+          <option value="Armenia">Armenia
+          <option value="Death To Armenia">Death To Armenia
+          <option value="East Bay Bottle Rockets">East Bay Bottle Rockets
+          <option value="Here Comes Da Pain">Here Comes Da Pain
+          <option value="Maximus Sparticus">Maximus Sparticus
+          <option value="NorCal Nuggets">NorCal Nuggets
+          <option value="Team Kill">Team Kill
+          <option value="The Maverick Boilermakers">The Maverick Boilermakers
+          </select></td>
+      </tr>
+    </table>
+    <input type=submit value="Submit">
+    </form>
+  </td>
+
+  <td width="33%">
+    <form action="/cgi-bin/lineup.cgi" method="post">
+    <center><h2>Display Starting Lineup</h2></center>
+    <table>
+    <tr>
+      <td>Week:</td>
+      <td><select name=f_week><option selected value="">Select a Week
+        <option value="1">Week 1
+        </select></td>
+    </tr>
+    <tr>
+      <td>Team:</td>
+      <td><select name=f_team><option selected value="">Select a Team
+        <option value="Armenia">Armenia
+        <option value="Death To Armenia">Death To Armenia
+        <option value="East Bay Bottle Rockets">East Bay Bottle Rockets
+        <option value="Here Comes Da Pain">Here Comes Da Pain
+        <option value="Maximus Sparticus">Maximus Sparticus
+        <option value="NorCal Nuggets">NorCal Nuggets
+        <option value="Team Kill">Team Kill
+        <option value="The Maverick Boilermakers">The Maverick Boilermakers
+        </select></td>
+    </tr>
+    </table>
+    <input type=submit value="Submit">
+    </form>
+  </td>
+
+  <td width="33%">
+  <form action="/cgi-bin/schedule.cgi" method="post">
+  <center><h2>Display Schedule</h2></center>
+  <table>
+    <tr>
+      <td><select name=f_week><option selected value="">Select a Week
+        <option value="1">Week 1
+        <option value="2">Week 2
+        <option value="3">Week 3
+        <option value="4">Week 4
+        <option value="5">Week 5
+        <option value="6">Week 6
+        <option value="7">Week 7
+        <option value="8">Week 8
+        <option value="9">Week 9
+        <option value="10">Week 10
+        <option value="11">Week 11
+        <option value="12">Week 12
+        <option value="13">Week 13
+        <option value="14">Week 14
+        </select></td>
+    </tr>
+  </table>
+  <input type=submit value="Submit">
+  </form>
+  </td>
+</tr>
+
+<tr>
+  <td width="33%">
+  <form action="/cgi-bin/players.cgi" method="post">
+  <center><h2>Display Players by Position</h2></center>
+  <table>
+    <tr>
+      <td>Position:</td>
+      <td><select name=f_playerDB><option selected value="">Select a position
+        <option value="players_qb">Quarterbacks
+        <option value="players_wr">Wide Recievers
+        <option value="players_rb">Running Backs
+        <option value="players_te">Tight Ends
+        <option value="players_k">Kickers
+        <option value="players_def">Defense
+        </select></td>
+    </tr>
+
+    <tr>
+      <td>Team:</td>
+      <td><select name=f_team><option selected value="">Select a Team
+        <option value="all_players">All Players
+        <option value="all_teams">All Teams
+        <option value="Armenia">Armenia
+        <option value="Death To Armenia">Death To Armenia
+        <option value="East Bay Bottle Rockets">East Bay Bottle Rockets
+        <option value="The Maverick Boilermakers">The Maverick Boilermakers
+        <option value="Maximus Sparticus">Maximus Sparticus
+        <option value="NorCal Nuggets">NorCal Nuggets
+        <option value="Here Comes Da Pain">Here Comes Da Pain
+        <option value="Team Kill">Team Kill
+        </select></td>
+    </tr>
+    </table>
+    <input type=submit value="Submit">
+    </form>
+  </td>
+</tr>
+
+</table>
+</body></html>

@@ -1,0 +1,20 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+
+<html>
+<head>
+
+</head>
+
+<frameset rows="100,*" border=0 frameborder=0>
+	<frame name="header" src="header.html" scrolling=no target="_self">
+	<frameset cols="244,*" border=0 frameborder=0>
+			<frame name="contents" src="side.html" target="_self">
+		<frameset rows="100%" border=0>
+                        <frame name="main" src="dashboard.html" target="_self">
+                </frameset>
+
+	</frameset>	
+
+</frameset>	
+
+</html>
